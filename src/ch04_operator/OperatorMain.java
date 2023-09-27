@@ -213,7 +213,7 @@ public class OperatorMain {
         System.out.println(pear == stomach);
 
         // 문자열 값이 같은지 비교
-        // .equals(문자열)
+        // .equals(문자열) !!!!!!!!!!!!!!!!
         // 해당 문자열이 괄호 안 문자열과 같다면 true, 다르면 false 리턴
         System.out.println(ship.equals(stomach));
 

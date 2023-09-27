@@ -88,6 +88,304 @@ public class LoopFor {
         System.out.println(sum);
 
 
+        sum = 0;
+        // 실행결과는 같은데 for문의 실행 횟수는 더 적다.
+        // (프로그램 실행 속도 증가 = 성능 증가)
+        for(int i = 0; i <= 40; i += 2){
+            // i = 0, i = 2, i = 4
+            sum += i;
+        }
+        System.out.println(sum);
+
+        // 0부터 2까지 0.2마다 출력
+        // 소수인 double, float 타입의 연산은 정확하지 않으므로 비추천한다.
+        for(double i = 0; i <= 2; i += 0.2){
+            System.out.println(i);
+        }
+
+        // 0부터 2까지 0.2마다 출력
+        for(int i = 0; i <= 20; i += 2){ // 0, 2, 4, 6, 8, ..., 20
+            System.out.println(i / 10.0); // 0, 0.2, 0.4, ..., 2
+        }
+
+        System.out.println("\n=================================\n");
+
+        // 구구단 2단
+        // 2 x 1 = 2
+        // 2 x 2 = 4
+        // 2 x 3 = 6
+        // 2 x 9 = 18
+//        System.out.println("2 x 1 = 2");
+//        System.out.println("2 x 2 = 4");
+//        System.out.println("2 x 3 = 6");
+//        System.out.println("2 x 4 = 8");
+//        System.out.println("2 x 5 = 10");
+//        System.out.println("2 x 6 = 12");
+        for(int i = 1; i <= 9; i++){
+            System.out.println("2 x " + i + " = " + (i*2));
+        }
+
+        System.out.println("\n==============================\n");
+
+        System.out.println("*");
+        System.out.println("**");
+        System.out.println("***");
+        System.out.println("****");
+        System.out.println("*****");
+
+        // 위의 코드를 for문을 이용하여 같은 결과가 나오도록 만들기
+        String star = "";
+        for(int i = 0; i < 5; i++){
+            star += "*";
+            System.out.println(star);
+        }
+
+        for(String i = "*"; i.length() <= 5; i += "*"){
+            System.out.println(i);
+        }
+
+        System.out.println("\n=============================\n");
+
+        // 나머지 연산자(%) 의 사용 예시
+        // for문 내에서 순환하는 숫자에 대해 사용하면 좋다.
+
+        // 국수공장에서 면을 20cm 뽑고 있다.
+        for(int i = 0; i < 20; i++){
+            System.out.println("||||||||");
+
+            // i가 4, 9, 14, ... 일때 절단 시키기
+            if(i == 4 || i == 9 || i == 14){
+                System.out.println("--------");
+            }
+
+            // 4, 9, 14, 19, 24, ... 는
+            // 전부 5로 나누었을때의 나머지가 4인 숫자들
+            if(i % 5 == 4){
+                System.out.println("--------");
+            }
+        }
+
+        System.out.println("\n===========================\n");
+
+        // 라면 공장에서 면을 30cm 뽑고 있는데
+        // 6cm 마다 잘라주어야 한다.
+        // ////////
+        // \\\\\\\\
+        // ////////
+        // \\\\\\\\
+        for(int i = 0; i < 30; i++){
+            if(i % 2 == 0){  // 홀짝 판별을 위함
+                System.out.println("////////");
+            }else {
+                System.out.println("\\\\\\\\\\\\\\\\");
+            }
+
+            // i가 5, 11, 17, 23, ... 일때 자른다.
+            // 6으로 나누었을때, 나머지가 5인 숫자 (조건 체크)
+            // 조건을 체크하는 목적이 다른 if문은 서로 분리해야 한다.
+            if(i % 6 == 5){
+                System.out.println("--------");
+            }
+        }
+
+        System.out.println("\n=================================\n");
+
+        // 10부터 1까지 출력
+        int num = 10;
+        for (int i = 0; i < 10; i++){
+            System.out.println(num--);
+        }
+
+        // 거꾸로 for문
+        for(int i = 10; i >= 1; i--){
+            System.out.println(i);
+        }
+
+        System.out.println("\n==============================\n");
+
+        // for문으로 String을 가지고 놀기
+
+        // 숫자형 문자열의 각 자리수를 더한 결과 얻기
+        // submit02에서 했던걸 for문을 이용해서 해결
+        String example = "37841343235";
+
+        example.substring(0, 1);    // i가 0
+        example.substring(1, 2);    // i가 1
+        example.substring(2, 3);    // i가 2
+        example.substring(3, 4);    // i가 3
+        example.substring(4, 5);    // i가 4
+
+        // 문자열의 길이만큼 반복 실행
+        int result = 0;
+        for(int i = 0; i < example.length(); i++){
+            System.out.println( example.substring(i, i+1) );  // "3"
+            result += Integer.parseInt(example.substring(i, i+1));
+        }
+        System.out.println(result);
+
+        System.out.println("\n============================\n");
+
+        // 슈의 갯수는?
+        String syusyu = "슛슈슈ㅠ슈슛슛ㅅ슈슛ㅅ슈슈슈슈ㅠ슈슈슈";
+
+        // syusyu 에서 "슈"가 몇글자 들어가있는지 세어보기
+        // (눈으로 세어보기 11개 있음)
+
+        // syusyu에서 한글자씩 잘라서
+        // "슈"와 일치하는지 체크 (if문)
+        // 개수 체크 (if문이 실행될때마다 1씩 증가하는 변수 필요)
+        int count = 0;
+        for(int i = 0; i < syusyu.length(); i++){
+            System.out.println(syusyu.substring(i, i+1));
+            if(syusyu.substring(i, i + 1).equals("슈")){
+                count += 1;
+            }
+        }
+        System.out.println("슈의 갯수: " + count);
+
+        System.out.println("\n=====================================\n");
+
+        // break 문
+        // 반복문을 종료시키는데 사용
+        // 반복횟수를 줄여서 실행속도를 향상시키는데 사용
+
+        // 내 이름을 유니코드로 표현한다면?
+        // 유니코드 0 ~ 70000 중에서 찾기
+        char word = 0;
+        for(int i = 0; i < 70000; i++){
+            if(word == '웅'){  // 51221 52268 50885
+                System.out.println(i);
+                System.out.println(word);
+                // break문이 실행되면 가까운 반복문(for, while)
+                // 하나를 즉시 종료한다.
+                break;
+            }
+            word++;
+        }
+
+        System.out.println("\n===============================\n");
+
+        // continue 문
+
+        // 구구단을 출력하는 중에, 너무 쉬운 1,2,3은 출력 안한다.
+        for(int i = 1; i <= 9; i++){
+            if(i < 4){
+                // 반복문 내에서 continue가 실행되면
+                // 바로 다음 반복문으로 넘어간다.
+                // (continue 아래 코드는 실행되지 않음)
+                continue;
+            }
+            System.out.println("8 x " + i + " = " + (8 * i));
+        }
+
+        System.out.println("\n==============================\n");
+
+        // 찐 구구단(2단~9단) 출력
+        // 2 x 2 = 4
+        // 2 x 3 = 6
+        // 2 x 9 = 18
+        // ---------
+        // 3 x 2 = 6
+        // 3 x 3 = 9
+        // 3 x 9 = 27
+        // ---------
+        // 9 x 2 = 18
+        // 9 x 3 = 27
+        // 9 x 9 = 81
+
+        // 이중 for문 사용
+        for(int left = 2; left <= 9; left++){
+            for(int right = 2; right <= 9; right++){
+                System.out.println(left + " x " + right + " = " + (left * right));
+            }
+            System.out.println("------------");
+        }
+
+        /*
+            디버깅 모드
+
+            코드라인 좌측(라인 숫자 적혀있는 부분)을 마우스 좌클릭하면
+            breakpoint가 생성된다.
+
+            생성된 breakpoint는 다시 클릭하면 제거된다.
+
+            breakpoint를 생성한 후 디버깅모드 실행시
+            (상단 벌레모양 버튼 클릭 또는 [Shift + F9])
+            컴퓨터가 코드를 위에서부터 실행하다가 breakpoint가 있는 지점에
+            멈춰서 대기를 한다.
+
+            이후 하단 Debug 탭의 Step Over [F8] 를 실행하면
+            한단계씩 실행이 이루어진다.
+
+            코드를 한줄한줄 실행해보며 컴퓨터가 정확히 어디를 실행하고
+            그때마다 변수에 어떤 값이 담기고 있는지 확인할 때 사용
+
+            디버깅 모드 종료하려면 중지버튼(Terminate) [Ctrl + F2]
+
+         */
+
+        System.out.println("\n==================================\n");
+
+        // 트리
+        //     *
+        //    **
+        //   ***
+        //  ****
+        // *****
+
+        for(int i = 0; i < 5; i++){
+            // i=0 일때, 공백 4칸 + * 1개
+            // i=1 일때, 공백 3칸 + * 2개
+            // i=2 일때, 공백 2칸 + * 3개
+            String blank = "";
+            for(int k = 0; k < 4-i; k++){
+                blank += " ";
+            }
+
+            String stars = "";
+            for (int k = 0; k < i+1; k++){
+                stars += "*";
+            }
+
+            System.out.println(blank + stars);  //     *
+        }
+
+        System.out.println("\n===========================\n");
+
+        // 트리
+        //     *
+        //    ***
+        //   *****
+        //  *******
+        // *********
+
+        // i=0 일때, 공백 4칸, *은 1개
+        // i=1 일때, 공백 3칸, *은 3개
+        // i=2 일때, 공백 2칸, *은 5개  (i에 2를 곱한 후 1을 더함)
+        for(int i = 0; i < 5; i++){
+            String blank = "";
+            for(int k = 0; k < 4-i; k++){
+                blank += " ";
+            }
+
+            String stars = "";
+            for(int k = 0; k < (i*2)+1; k++){
+                stars += "*";
+            }
+
+            System.out.println(blank + stars);
+        }
+
+        // *********
+        //  *******
+        //   *****
+        //    ***
+        //     *
+
+
+
+
+
 
     }
 
