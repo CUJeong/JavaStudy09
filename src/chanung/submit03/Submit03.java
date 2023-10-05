@@ -2,6 +2,7 @@ package chanung.submit03;
 
 public class Submit03 {
     public static void main(String[] args) {
+        // 팩토리얼
         long num = 1;
         for(int i = 1; i <= 15; i++){
             num *= i;
