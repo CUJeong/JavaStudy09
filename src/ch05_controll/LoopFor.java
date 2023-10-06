@@ -357,14 +357,13 @@ public class LoopFor {
         //    ***
         //   *****
         //  *******
-        // *********
 
         // i=0 일때, 공백 4칸, *은 1개
         // i=1 일때, 공백 3칸, *은 3개
         // i=2 일때, 공백 2칸, *은 5개  (i에 2를 곱한 후 1을 더함)
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < 6; i++){
             String blank = "";
-            for(int k = 0; k < 4-i; k++){
+            for(int k = 0; k < 5-i; k++){
                 blank += " ";
             }
 
