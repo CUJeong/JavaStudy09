@@ -1,5 +1,7 @@
 package ch09_class.nextit;
 
+import ch09_class.school.Student;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -285,7 +287,6 @@ public class NextitMain {
         Collections.sort(stuList, (stuA, stuB) -> {
             return stuB.level - stuA.level;
         });
-
 
     }
 
