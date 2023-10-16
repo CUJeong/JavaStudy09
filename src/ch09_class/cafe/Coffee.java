@@ -1,22 +1,22 @@
-package chanung.submit09.q02;
+package ch09_class.cafe;
 
-public class Fish {
-    private String name;        /* 물고기 이름 */
-    private int price;          /* 물고기 싯가 */
+public class Coffee {
+    private String name;        /* 음료수 명 */
+    private int price;          /* 음료 가격 */
 
-    public Fish() {
+    public Coffee() {
     }
 
-    public Fish(String name, int price) {
+    public Coffee(String name, int price) {
         this.name = name;
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return "[" + name +
-                ", 가치: " + price +
-                ']';
+        return "Coffee{" + name +
+                " | 가격: " + price +
+                '}';
     }
 
     public String getName() {
