@@ -230,7 +230,143 @@ public class ApiDate {
 
         String welcomeDay = "2023.09.18";
 
+        sdf = new SimpleDateFormat("yyyy.MM.dd");
+        Date welcomeDate = sdf.parse(welcomeDay);
+
+        // todayDate에 시/분/초 가 00:00:00 이 되어야 함
+        Date todayDate = new Date();
+
+        // todayDate <- 2023.10.25 09:16:22
+        String today = sdf.format(todayDate);  // <- 2023.10.25
+        System.out.println(today);
+
+        // todayDate <- 2023.10.25 00:00:00
+        todayDate = sdf.parse(today);
+        System.out.println(todayDate);
+
+        long dday = todayDate.getTime() - welcomeDate.getTime();
+
+        dday = dday / (1000 * 60 * 60 * 24);
+
+        System.out.println("학원 온 날짜 D-day: " + dday);
+
         String together = "2023.11.03";
+
+        Date togetherDate = sdf.parse(together);
+
+        dday = todayDate.getTime() - togetherDate.getTime();
+
+        dday = dday / (1000 * 60 * 60 * 24);
+
+        System.out.println("회식까지 D-day: " + dday);
+
+        System.out.println("\n=================================\n");
+
+        // Calendar 날짜 연산
+        // 특정 날짜를 기준으로 날짜를 더하거나 뺄때 유용
+        Calendar toCal = Calendar.getInstance();
+        System.out.println(sdf.format(toCal.getTime()));
+
+        // 3일 뒤
+        toCal.add(Calendar.DATE, 3);
+        System.out.println(sdf.format(toCal.getTime()));
+
+        // 20일 뒤
+        toCal.add(Calendar.DATE, 20);
+        System.out.println(sdf.format(toCal.getTime()));
+
+        // 7일 전
+        toCal.add(Calendar.DATE, -7);
+        System.out.println(sdf.format(toCal.getTime()));
+
+        // 10달 뒤
+        toCal.add(Calendar.MONTH, 10);
+        System.out.println(sdf.format(toCal.getTime()));
+
+        System.out.println("\n===================================\n");
+
+        // 달력 만들기
+        int year = 2023;
+        int month = 9;
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month-1, 1);
+        System.out.println(sdf.format(calendar.getTime()));
+
+        // 1일이 무슨 요일에 시작하는지 알아야 함
+        // 1: 일요일, 2: 월요일, 3: 화요일, ..., 7: 토요일
+        int startDay = calendar.get(Calendar.DAY_OF_WEEK);
+        System.out.println(startDay);  // 3
+
+        // 해당 월의 마지막 일자가 몇인지 알아야 함
+        int lastDay = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        System.out.println(lastDay);  // 31
+
+        System.out.println(year + "년 " + month + "월 달력");
+        System.out.println("일\t월\t화\t수\t목\t금\t토");
+
+
+
+        for(int i = 1; i <= 42; i++){
+            // i가 startDay보다 작으면 출력 안함
+            if(i < startDay){
+                System.out.print("\t");
+            }else{
+                int currentDay = i - startDay + 1;
+
+                // currentDay가 lastDay보다 크면 for문 종료
+                if(currentDay > lastDay){
+                    break;
+                }
+
+                System.out.printf("%2d\t", currentDay);
+            }
+
+            // i가 7, 14, 21, 28, ... 일때 줄바꾸기
+            if(i % 7 == 0){
+                System.out.println();
+            }
+        }
+
+        System.out.println("\n==========================\n");
+
+        // 주말이 제외된 달력을 만들어보기
+        System.out.println(year + "년 " + month + "월 달력");
+        System.out.println("월\t화\t수\t목\t금");
+
+        for(int i = 1; i <= 42; i++){
+            // i가 startDay보다 작으면 출력 안함
+            if(i < startDay && i > 1){
+                // i가 1일때 일요일인데도 탭이 추가된다.
+                System.out.print("\t");
+            }else{
+                int currentDay = i - startDay + 1;
+
+                // currentDay가 lastDay보다 크면 for문 종료
+                if(currentDay > lastDay){
+                    break;
+                }
+
+                // 숫자를 그리는 부분
+                // 일, 토요일은 그리지 않도록
+                // i % 7 == 0 일때 그리지 않음
+                // 또 i % 7 == 1 일때도 그리지 않음
+                // i % 7 == 0 또는 i % 7 == 1 이 아닌경우에만 그린다.
+                if(!(i % 7 == 0 || i % 7 == 1)){
+                    System.out.printf("%2d\t", currentDay);
+                }
+
+            }
+
+            // i가 7, 14, 21, 28, ... 일때 줄바꾸기
+            if(i % 7 == 0){
+                System.out.println();
+            }
+        }
+
+
+
+
 
     }
 
