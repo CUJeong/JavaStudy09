@@ -1,8 +1,6 @@
 package ch14_jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Test {
     public static void main(String[] args) {
@@ -23,6 +21,16 @@ public class Test {
 
             System.out.println("연결 성공");
 
+            String query = "SELECT * FROM members";
+
+            PreparedStatement ps = conn.prepareStatement(query);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+                System.out.println(rs.getString("user_id"));
+                System.out.println(rs.getString("user_name"));
+            }
 
 
         } catch (SQLException e) {
