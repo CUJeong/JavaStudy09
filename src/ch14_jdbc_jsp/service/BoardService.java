@@ -69,5 +69,21 @@ public class BoardService {
     }
 
 
+    // 글 삭제
+    public int deleteBoard(BoardDTO board){
+        Connection conn = cp.getConnection();
+        int result = 0;
+
+        try {
+            result = dao.deleteBoard(conn, board);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally{
+            cp.releaseConnection(conn);
+        }
+
+        return result;
+    }
+
 
 }
