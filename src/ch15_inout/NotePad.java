@@ -1,5 +1,7 @@
 package ch15_inout;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class NotePad {
@@ -11,7 +13,17 @@ public class NotePad {
         // 내용이 들어간 텍스트 파일 생성하기
         Scanner scan = new Scanner(System.in);
 
+        System.out.print("파일명 입력: ");
+        String fileName = scan.nextLine();
 
+        System.out.print("내용 입력: ");
+        String content = scan.nextLine();
+
+        try(FileWriter writer = new FileWriter("/home/ssam/stuList/" + fileName + ".txt")){
+            writer.write(content);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
